@@ -1,0 +1,44 @@
+body,ul,li,div{
+    margin: 0;
+    padding: 0;
+    font-family: "Agency FB";
+    font-size: 14px;
+}
+ul,li{
+    list-style: none;
+}
+#tab{
+    margin: 10px auto 0;
+    width: 500px;
+
+}
+#tab ul{
+    position: relative;
+    top: 1px;
+}
+#tab ul li{
+    /*使用相对于自身的移动定位，解决边框重叠问题*/
+    float: left;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin-left: 10px;
+    cursor: pointer;
+}
+#tab ul li.select{
+    background:-webkit-linear-gradient(top left,red,green,yellow);
+}
+#tab div{
+    display: none;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    border: 1px solid #ddd;
+    /*清除浮动布局的影响*/
+    clear: both;
+}
+#tab div.select{
+    display: block;
+}
