@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型的区分和检验</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+        //基本数据类型和引用数据类型的本质区别
+        var num=12;
+        var num1=num;
+        num1++;
+        console.log(num);//基本数据类型
+
+        var obj={name:"李泽博"};
+        var obj1=obj;
+        obj1.name="阳痿";
+        console.log(obj.name);//引用数据类型
+    //如果你深入理解了这段代码，你就会知道在js中基本数据类型和引用数据类型的内存分配。
+    //在这里，基本数据类型只是赋值；而var obj1=obj,相当于开辟了一块新的内存空间，存放的是对象中的基本数据类型。
+    //这里的赋值付给的是obj的地址，因为在同一块内存空间中var obj1存放的是地址，而地址又是指针，指向的是obj的内存空间。
+    //所以他们操作的是同一个对象。所以这里obj.name的值是改变后的值。见图1基本数据类型和引用数据类型的内存分配.PNG
+
+    //数据类型的检测
+    //返回的是字符串
+    var str="lizbeo";
+    console.log(typeof(str));
+    console.log(typeof (true));
+    console.log(typeof (234));
+    var obj={};
+    //typeof()只能检测基本的数据类型，不能具体检查object下细分的类型。只要遇到是引用的数据类型都只能检测出的是
+        //object
+        
+    var ary=[];
+    console.log(typeof(ary));
+    console.log(typeof (obj));
+    console.log(typeof (null));
+    console.log(typeof (a));
+    console.log("fucntiong:");
+    console.log(typeof (function () {
+        
+    }));
+
+    //注意这是一套腾讯的面试题，在这里typeof返回的是String字符串，但是有些浏览器比如Google他会把它"" 去掉
+        //所以这里是string而不是object
+    console.log(typeof typeof typeof typeof []);
+
+</script>
+</html>
