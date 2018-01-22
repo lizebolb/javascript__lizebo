@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM节点和获取DOM节点的属性</title>
+</head>
+<body>
+        <div id="div1">
+                <h1>lijia</h1>
+                <!--DOM节点属性-->
+                <ul>
+                    <li>lizebo</li>
+                    <li>liJunKe</li>
+                    <li>李嘉欣</li>
+                    <li>LIaiang</li>
+                </ul>
+        </div>
+</body>
+<script type="text/javascript">
+            //获取节点的一些方法，dom文档可以采用家庭的方式进行思考
+        var Ldiv=document.getElementById("div1");
+        //1.获取所有子节点：（节点包括元素，注释，文字；而元素只是元素）
+        Ldiv.childNodes;
+        //2.获取所有的元素节点
+        Ldiv.children;
+        //3.获取所有子节点的第一个
+        Ldiv.firstChild;
+        //4.获取所有子节点的最后一个
+        Ldiv.lastChild;
+        //5.获取父亲节点
+        Ldiv.parentNode;
+        //6.获取哥哥节点
+        Ldiv.previousSibling;
+        //7.获取弟弟节点
+        Ldiv.nextSibling;
+//思路：按着家族关系来进行理解，子，父，兄弟。
+
+    //在js中需要我们掌握的是节点类型：
+            //              nodeType nodeName       nodeValue
+    //元素节点（元素标签）  1         大写的标签名    null
+    //文本节点（文字）      3           #text           文字内容
+    //注释节点（注释）      8           #comment        注释内容
+    //document              9           #document           null
+
+            //在标准的浏览器下，我们把空格（space）和enter（回车）都当做我们的文本。
+    var Ldiv2=document.getElementById("div1");
+    console.log(Ldiv2.nodeType);
+    console.log(Ldiv2.nodeName);
+    console.log(Ldiv2.nodeValue);
+    console.log("document节点名称，节点内容，节点类型");
+
+    console.log(document.nodeType);
+    console.log(document.nodeName);
+    console.log(document.nodeValue);
+
+    console.log(Ldiv2.childNodes);
+
+    //学习节点类型有什么用？可以自定义类型jquery的库，必须使用这种节点机制。
+    //实例：模拟children方法，实现指定元素下的元素子节点
+
+    //getMyChildren：获取指定元素下的所有元素节点
+    //ele:我们要获取谁下面的就需要传递谁。
+    //@return：
+    //我们最终获取的元素节点
+    //by lzb on 2018/1/19
+    function getMyChildren(ele) {
+        var ary=[],nodes=ele.childNodes;
+        for(var i=0;i<nodes.length;i++){
+            if(nodes[i].nodeType===1){
+                ary.push(nodes[i]);
+            }
+        }
+        return ary;
+    }
+    var ele=document.getElementById("div1");
+    var ary1=getMyChildren(ele);
+    console.log(ary1);
+    //This function named getMyChildren() defined by myself use javascript like Jquery's method :children();
+
+            //其实这里还可以更加完善一些，就是在传入一个tagName,也就是说，传入一个你想得到的标签名字，
+            //这个方法可以选择你想得到的标签名字元素对象子节点，其实就是根据上面的判断进行再次判断，让tagName和.nodeName
+            //进行真假判断，如果是假，则不存入值；如果是真的，存入值。
+</script>
+</html>

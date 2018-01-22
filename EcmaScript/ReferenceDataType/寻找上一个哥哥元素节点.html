@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寻找上一个哥哥元素节点</title>
+</head>
+<body>
+        <div>
+            <ul>
+                <li>nihoa</li>
+                <li>hehe</li>
+                <!--你在干嘛-->
+                <li id="li3">hah</li>
+            </ul>
+        </div>
+</body>
+<script type="text/javascript">
+            var li3=document.getElementById("li3");
+            var pre=li3.previousSibling;
+            while(pre && pre.nodeType!==1){
+                pre=pre.previousSibling;
+            }
+            console.log(pre);
+
+            //需求：找到所有的哥哥元素
+            function prevAll(ele) {
+                var ary=[];
+                var pres=ele.previousSibling;
+                while (pres){
+                    if(pres.nodeType===1){
+                        ary.unshift(pres);
+                    }
+                    pres=pres.previousSibling;
+                }
+                return ary;
+            }
+            var ele=document.getElementById("li3");
+            var result=prevAll(ele);
+            console.log(result);
+            //这就是jquery里面的寻找所有上一个所有兄弟节点的js编写--by lzb
+            console.log(result[0]);
+            console.log("如果我们使用push,则result[0]和使用unshift方向相反。");
+
+            //思考：
+            //获取下一个弟弟元素节点
+            //获取所有的弟弟元素节点
+            //获取相邻的2哥兄弟元素节点
+            //获取所有兄弟的元素节点
+            //获取所有兄弟包括自己的元素节点
+
+        //思路：没什么难度，就是首先的知道判断是不是元素的方法nodeType===1;
+        //然后就是进行循环查找，找到之后存入数组而已。
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM的增删改查</title>
+</head>
+<body>
+    <!--需求：使用JavaScript在body中添加一个div-->
+</body>
+<script type="text/javascript">
+        var ldiv=document.createElement("div");
+        ldiv.id="div1";
+        ldiv.style.width="100px";
+        ldiv.style.height="200px";
+        ldiv.style.border="1px solid red";
+        document.body.appendChild(ldiv);
+        //注意使用这种方法顾名思义就是在末尾进行添加
+        //我们需要添加到前面，Javascript提供了一个方法，insertBefore,顾名思义
+        //通过理解函数名字就知道这是插入到前一个元素
+        var ldiv2=document.createElement("div");
+        ldiv2.id="div2";
+        ldiv2.style.width="100px";
+        ldiv2.style.height="200px";
+        ldiv2.style.border="1px solid green";
+        document.body.insertBefore(ldiv2,ldiv);
+        //如果我们不知道document.body这个元素呢
+        //可以使用
+        //ldiv2.parentNode.insertBefore("newElement","oldElement");
+        //同理可得到删除元素的方法
+        //ldiv2.parentNode.removeChild("lilil2");
+        //克隆：odiv.cloneNode();//里面可以写true,可以把里面所有的元素的子子孙孙克隆。
+
+        //替换：odiv.parentNode.replaceChild(newElement,oldElement);
+
+        //增加自定义属性
+        //1.把ldiv2看作一个对象数据类型，我们在他的开辟的内存空间中增加一个属性
+        ldiv2.name="";
+        ldiv2["liZAHE"]="";
+        //原理
+        var lll={};
+        lll.name="";
+
+        //2.项目中常用的方法，设置元素的自定义属性setAttribute,包含自定义属性
+        //区别：修改HTML元素的结构了。
+        //这种方式是可以直接将属性映射到HTML上，浏览器会显示属性映射
+        //比如：
+        ldiv.setAttribute("xingming","里准备");
+        alert(ldiv.getAttribute("xingming"));
+        //ldiv.removeAttribute("xingming");
+    //使用setAttribute,必须使用getAttribute进行获取，而是用上面的2中方式则需要使用. 或者是[];这就是全部区别。
+    //但是有个弊端，在ie678下就不能修改class属性。
+</script>
+</html>
