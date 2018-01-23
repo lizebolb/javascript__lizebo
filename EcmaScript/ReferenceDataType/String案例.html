@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String案例</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    var time="2018-1-23 21:37:1";
+    //2018年01月23日 21时37分01秒
+    //将指定的字符串拼接成指定格式的字符串
+    function addZero(num) {
+        return Number(num)<10?"0"+num:num;
+    }
+    function pingJieZiFuChuan(str) {
+        var ary=str.split(" ");
+        var ary1=ary[0].split("-");
+        var ary2=ary[1].split(":");
+        return addZero(ary1[0])+"年"+addZero(ary1[1])+"月"+addZero(ary1[2])+"日 "+addZero(ary2[0])+"时"+addZero(ary2[1])+"分"+addZero(ary2[2])+"秒";
+    }
+    console.log(time);
+    console.log(pingJieZiFuChuan(time));
+</script>
+</body>
+</html>

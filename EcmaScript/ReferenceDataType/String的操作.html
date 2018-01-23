@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String的操作</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+        //String:字符串类
+        var str="welcome to lizebo's study lessons ！good good study,day day up.";
+        //字符串常用的操作方法
+        //1.获取字符串中的单个字符和单个字符的ASCII码值
+        var str1=str.charAt(7);
+        console.log(str1);
+        for(var i=0;i<str.length;i++){
+            console.log(str[i]);
+        }
+        //获取每一个字符的ascii（Unicode）编码值
+        for(var j=0;j<str.length;j++){
+            console.log(str.charCodeAt(j));
+        }
+        //2.字符串截取：subStr(n,m);从索引n开始截取m个字符
+        var strSub=str.substr(0,18);
+        console.log(strSub);
+                //substring(n,m);从索引n开始，找到m处，不包含m的字符串
+        var strSun1=str.substring(0,19);
+        console.log(strSun1);
+                //slice(n,m)从索引n开始，找到索引m处（不包含m）,将找到的字符返回
+                //和substring 一样，但是slice更强大。支持负数作为索引，str.length+负数索引
+
+            //在js中字符串操作截取由哪些方法？
+                //三种，substr, substring slice(更为强大，支持负数，怎么计算，也即是str.leng+负数的值)
+        //3.字符串中的位置查找
+        //indexOf(字符)：获取指定字符在字符串中第一次出现的索引
+        //lastIndexOf(字符)：获取指定字符串在字符中的最后的索引位置
+        //如果没有这个字符，返回的是-1，经常用这个方法判断字符串中是不是有字符
+        if(str.indexOf("j")===-1&&str.lastIndexOf("j")===-1){
+            console.log("这个字符串中没有字符'j'!");
+        }
+        //4.大小写转换
+        //str.toLowerCase
+        //str.toUpperCase
+        //5.替换
+        //replace（要替换的老字符，替换成新的字符）
+        //在不使用正则的情况下只替换一个
+        //6.将字符串按照指定的分隔符拆分成数组
+        var s="1+2+3+4+5";
+        console.log(s.split("+"));
+</script>
+</html>
