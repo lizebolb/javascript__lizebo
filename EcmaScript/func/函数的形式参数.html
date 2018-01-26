@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的形式参数</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    //js灵活的参数传递-------arguments;在后端语言中关于函数参数的传递是非常严格的，但是js直接进行的arguments简化。
+        function sum() {
+            //关于函数的arguments:函数天生自带的，用来接收函数传递进来的参数值的。
+            console.log(arguments);
+            console.log(typeof arguments);
+            var total=null;
+            for(var i=0;i<arguments.length;i++){
+                total+=arguments[i];
+            }
+            return total;
+        }
+        var total=sum(100,200,300);
+        //观察他的结果可以发现，它是以数字作为索引，索引从0开始主机递增，
+        //1.）索引0储存的是一个参数值，索引1储存的是第二个参数值，索引n储存的是第n+1个值。也有length的属性，
+        //索引我们叫他类数组。
+        //2.）callee:代表当前函数本身。
+</script>
+</html>

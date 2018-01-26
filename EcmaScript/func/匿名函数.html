@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>匿名函数</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    //--->实名函数：起了名字的函数是实名函数
+    //--->匿名函数：没有起名字的函数就是匿名函数
+
+    //在js中常用到的匿名函数有2中方式：
+    //1）自执行函数：定义函数和函数执行一起完成了
+    ;(function (){
+            console.log(arguments.length);
+        })();
+                //这种形式为了是上下文不产生矛盾，使用；进行区分。
+        +function () {}();
+        -function () {}();
+        !function () {}();
+    //2)还有一种自执行函数
+        var  ele;
+        ele.onclick=function () {};
+    //匿名函数就这2中形式------完结。
+</script>
+</html>
