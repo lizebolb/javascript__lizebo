@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预解释</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var obj1={name:"lib",age:23};
+    var obj2=obj1;
+    obj1.age=23;
+    console.log(obj1.age);
+    console.log(obj2.age);
+    //2个对象分别操作的是同一个内存空间，obj1.age改变obj2.age也改变。
+    //这里需要记住的是类并不是数据类型，在内存中他只是存入类中的字符串，相当于js中函数的定义，开辟了内存空间，但是存入的是代码字符串
+    //对象则是开辟内存空间，存入可以操作的属性和方法，所以说类只是对象的定义；通过new开辟内存并且创造一个对象。而在Java中
+    //有着更高级的定义，也就是对类的定义---接口。
+
+    //1.预解释：
+    //在当前的作用域，js代码执行之前，浏览器首先会默认的把所有带var和function的进行提前的声明或者定义
+    //1）理解声明和定义
+    //var num=xxxx;
+    //声明（declare）:var num;-->告诉我们浏览器在全局作用域中有一个num变量
+    //定义（defined）：num=12;-->给我们的变量进行赋值
+
+    //2)对于带var和function关键字的在预解释的时候操作还是不一样的
+    //var --》在预解释的时候，只是提前的声明
+    //function--》在预解释的时候提前的声明+定义都完成了。
+    //总结：其实在我们代码执行的时候，自我觉得不管什么语言，变量都要经过三个步骤，声明+定义+执行。
+
+    //3)预解释只发生在当前作用域中，
+    //案例：
+    console.log(num);//undefined,存在num,但是没有定义也就是赋值，所以是undefined
+    console.log(obj);
+    console.log(fns);
+    // ƒ fns(num1,num2) {
+    //     var total=num1+num2;
+    //     console.log(total);
+    // }这也说明了在栈内存中存入的是代码字符串。由于func已经声明并且定义，所以可以获得到函数，而不是undefined
+    var num=12;
+    console.log(num);
+    fns(123,234);//由于预解释，可以在上面执行。因为预解释的时候声明加定义已经完成了。
+    var obj={name:"lzb",age:23};
+    function fns(num1,num2) {
+        var total=num1+num2;
+        console.log(total);
+    };//所以当浏览器执行代码到这37和40的时候，function中的代码直接跳过。因为预解释已经声明和定义了。
+    //3.在js中的内存分类：
+    //栈内存：用来提供一个js代码执行的环境。-->作用域（全局作用域和私有作用域）。
+    //堆内存：用来存储引用数据类型的值---》对象存储的是属性名和属性值；
+    //函数存储的是代码字符串：----》为什么都是对象存储的确是不同的值，我觉得可能的原因应该是js中function不仅是函数对象，
+    //他还有类似与Java中类的概念，而类在内存中的就是存储的是代码字符串。
+//见图image：预解释1.png
+</script>
+</html>
